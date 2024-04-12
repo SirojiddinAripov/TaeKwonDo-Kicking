@@ -8,26 +8,34 @@
 <body>
   <div id="radio">
     <form id="slider">
-      <input type="radio" name="radioBtn" id="repeatRadioBtn">
+      <input type="radio" name="radioBtn" id="repeatRadioBtn" checked="checked">
       <label for="repeatRadioBtn">Constant</label>
       <input type="radio" name="radioBtn" id="variedRadioBtn">
       <label for="variedRadioBtn">Varied</label>
     </form>
   </div>
-  <div id="form">
+  <div id="constant">
     <form id="textinput">
       <label for="repetitions">Repetitions(count)</label>
       <br>
-      <input type="number" id="repetitions" name="repetitions" value = "1"> <br><br>
+      <input type="number" id="repetitions" name="repetitions" value = "10"> <br><br>
       <label for="duration">Durations(ms): </label>
       <br>
-      <input type="number" id="duration" name="duration" value = "1"> <br><br>
+      <input type="number" id="duration" name="duration" value = "1000"> <br><br>
+    </form>
+  </div>
+  <div id="varied" style="display: inline;">
+    <form id="textinput">
+      <label for="pattern">Give pattern in milliseconds separated by commas e.g. 200, 300, 100, 400, 1000</label>
+      <br>
+      <input type="text" id="pattern" name="pattern" value = "200, 300, 100, 400, 1000"> <br><br>
     </form>
   </div>
   <div id="buttons">
-    <button id="submit">SUBMIT</button>
     <button id="start">START</button>
+    <button id="stop">STOP</button>
   </div>
+  <p id="test"></p>
   <script src="main.js"></script>
 </body>
 </html>
