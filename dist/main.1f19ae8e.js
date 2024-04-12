@@ -127,6 +127,11 @@ var setValues = function setValues() {
 document.getElementById('submit').addEventListener(onclick, function () {
   setValues();
 });
+document.getElementById('start').addEventListener(onclick, function () {
+  for (var i = 0; i < repeat; i += 1) {
+    window.vibrate(duration);
+  }
+});
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

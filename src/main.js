@@ -9,3 +9,9 @@ const setValues = () => {
 document.getElementById('submit').addEventListener(onclick, () => {
   setValues();
 });
+
+document.getElementById('start').addEventListener(onclick, () => {
+  for (let i = 0; i < repeat; i += 1) {
+    window.vibrate(duration);
+  }
+});
