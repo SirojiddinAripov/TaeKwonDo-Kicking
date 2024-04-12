@@ -44,8 +44,8 @@ const executeConstantPattern = async (repeat, duration) => {
   paragraph.innerHTML = '';
   for (let i = 0; i < repeat; i += 1) {
     if (!runClock) { return; }
-    await delay(duration);
     navigator.vibrate(duration);
+    await delay(duration);
     paragraph.innerHTML += `${duration} `;
   }
   switchButtonsState();
@@ -56,8 +56,8 @@ const executeVariedPattern = async (pattern) => {
   paragraph.innerHTML = '';
   for (const duration of pattern) {
     if (!runClock) { return; }
-    await delay(duration);
     navigator.vibrate(duration);
+    await delay(duration);
     paragraph.innerHTML += `${duration} `;
   }
   switchButtonsState();

@@ -191,10 +191,10 @@ var executeConstantPattern = /*#__PURE__*/function () {
           }
           return _context.abrupt("return");
         case 5:
-          _context.next = 7;
-          return delay(duration);
-        case 7:
           navigator.vibrate(duration);
+          _context.next = 8;
+          return delay(duration);
+        case 8:
           paragraph.innerHTML += "".concat(duration, " ");
         case 9:
           i += 1;
@@ -236,10 +236,10 @@ var executeVariedPattern = /*#__PURE__*/function () {
           }
           return _context2.abrupt("return");
         case 8:
-          _context2.next = 10;
-          return delay(_duration);
-        case 10:
           navigator.vibrate(_duration);
+          _context2.next = 11;
+          return delay(_duration);
+        case 11:
           paragraph.innerHTML += "".concat(_duration, " ");
         case 12:
           _context2.next = 4;
