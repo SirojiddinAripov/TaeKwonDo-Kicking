@@ -123,11 +123,12 @@ var duration;
 var setValues = function setValues() {
   repeat = document.getElementById('repetitions').value;
   duration = document.getElementById('duration').value;
+  alert("".concat(repeat, " and ").concat(duration));
 };
-document.getElementById('submit').addEventListener(onclick, function () {
+document.getElementById('submit').addEventListener("click", function () {
   setValues();
 });
-document.getElementById('start').addEventListener(onclick, function () {
+document.getElementById('start').addEventListener("click", function () {
   for (var i = 0; i < repeat; i += 1) {
     window.vibrate(duration);
   }
