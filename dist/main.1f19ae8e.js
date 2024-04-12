@@ -134,6 +134,8 @@ var repeatText = document.getElementById('repetitions');
 var durationText = document.getElementById('duration');
 var patternText = document.getElementById('pattern');
 var paragraph = document.getElementById('test');
+var startBtn = document.getElementById('start');
+var stopBtn = document.getElementById('stop');
 
 //process used input and call according function to execute pattern.
 var setValues = function setValues() {
@@ -146,7 +148,9 @@ var setValues = function setValues() {
     executeVariedPattern(pattern);
   }
 };
+//runClock is global to be able to stop the functions by the press of a button.
 runClock = true;
+//returns a promise which stops the execution of functions until time is out.
 var delay = function delay(ms) {
   if (!runClock) {
     return;
@@ -155,9 +159,7 @@ var delay = function delay(ms) {
     return setTimeout(resolve, ms);
   });
 };
-var clearTimer = function clearTimer(timer) {
-  clearInterval(timer);
-};
+//Executes the constant repeated pattern.
 var executeConstantPattern = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(repeat, duration) {
     var i;
@@ -168,17 +170,23 @@ var executeConstantPattern = /*#__PURE__*/function () {
           i = 0;
         case 2:
           if (!(i < repeat)) {
-            _context.next = 9;
+            _context.next = 11;
             break;
           }
+          if (runClock) {
+            _context.next = 5;
+            break;
+          }
+          return _context.abrupt("return");
+        case 5:
           paragraph.innerHTML += "".concat(duration, " ");
-          _context.next = 6;
+          _context.next = 8;
           return delay(duration);
-        case 6:
+        case 8:
           i += 1;
           _context.next = 2;
           break;
-        case 9:
+        case 11:
         case "end":
           return _context.stop();
       }
@@ -188,6 +196,7 @@ var executeConstantPattern = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
+//Executes a list of ms given by user.
 var executeVariedPattern = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(pattern) {
     var _iterator, _step, _duration;
@@ -200,44 +209,55 @@ var executeVariedPattern = /*#__PURE__*/function () {
           _iterator.s();
         case 4:
           if ((_step = _iterator.n()).done) {
-            _context2.next = 11;
+            _context2.next = 13;
             break;
           }
           _duration = _step.value;
+          if (runClock) {
+            _context2.next = 8;
+            break;
+          }
+          return _context2.abrupt("return");
+        case 8:
           paragraph.innerHTML += "".concat(_duration, " ");
-          _context2.next = 9;
+          _context2.next = 11;
           return delay(_duration);
-        case 9:
+        case 11:
           _context2.next = 4;
           break;
-        case 11:
-          _context2.next = 16;
-          break;
         case 13:
-          _context2.prev = 13;
+          _context2.next = 18;
+          break;
+        case 15:
+          _context2.prev = 15;
           _context2.t0 = _context2["catch"](2);
           _iterator.e(_context2.t0);
-        case 16:
-          _context2.prev = 16;
+        case 18:
+          _context2.prev = 18;
           _iterator.f();
-          return _context2.finish(16);
-        case 19:
+          return _context2.finish(18);
+        case 21:
           ;
-        case 20:
+        case 22:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[2, 13, 16, 19]]);
+    }, _callee2, null, [[2, 15, 18, 21]]);
   }));
   return function executeVariedPattern(_x3) {
     return _ref2.apply(this, arguments);
   };
 }();
-document.getElementById('start').addEventListener('click', function () {
+//add on click behaviors to the buttons.
+startBtn.addEventListener('click', function () {
+  startBtn.disabled = true;
+  stopBtn.disabled = false;
   runClock = true;
   setValues();
 });
-document.getElementById('stop').addEventListener('click', function () {
+stopBtn.addEventListener('click', function () {
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
   runClock = false;
 });
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
