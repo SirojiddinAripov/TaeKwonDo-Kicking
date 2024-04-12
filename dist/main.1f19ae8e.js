@@ -127,15 +127,24 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 //Either constant or varied changes based on radio button input.
-mode = 'varied';
+mode = 'constant';
 
 //text fields so we don't have to grab them each time
 var repeatText = document.getElementById('repetitions');
 var durationText = document.getElementById('duration');
+//pattern text
 var patternText = document.getElementById('pattern');
+//display pattern
 var paragraph = document.getElementById('test');
+//action buttons
 var startBtn = document.getElementById('start');
 var stopBtn = document.getElementById('stop');
+//mode change buttons
+var repeatRadioBtn = document.getElementById('repeatRadioBtn');
+var variedRadioBtn = document.getElementById('variedRadioBtn');
+//divisions to hide and unhide based on mode
+var repeatTextForm = document.getElementById('constant');
+var variedTextForm = document.getElementById('varied');
 
 //process used input and call according function to execute pattern.
 var setValues = function setValues() {
@@ -187,6 +196,8 @@ var executeConstantPattern = /*#__PURE__*/function () {
           _context.next = 2;
           break;
         case 11:
+          switchButtonsState();
+        case 12:
         case "end":
           return _context.stop();
       }
@@ -219,9 +230,10 @@ var executeVariedPattern = /*#__PURE__*/function () {
           }
           return _context2.abrupt("return");
         case 8:
-          paragraph.innerHTML += "".concat(_duration, " ");
-          _context2.next = 11;
+          _context2.next = 10;
           return delay(_duration);
+        case 10:
+          paragraph.innerHTML += "".concat(_duration, " ");
         case 11:
           _context2.next = 4;
           break;
@@ -238,7 +250,8 @@ var executeVariedPattern = /*#__PURE__*/function () {
           return _context2.finish(18);
         case 21:
           ;
-        case 22:
+          switchButtonsState();
+        case 23:
         case "end":
           return _context2.stop();
       }
@@ -248,17 +261,50 @@ var executeVariedPattern = /*#__PURE__*/function () {
     return _ref2.apply(this, arguments);
   };
 }();
-//add on click behaviors to the buttons.
+var switchButtonsState = function switchButtonsState() {
+  startBtn.disabled = !startBtn.disabled;
+  stopBtn.disabled = !stopBtn.disabled;
+};
+//----add on click behaviors to the buttons.----
+/**
+ * Disables itself
+ * Enables stop button
+ * enables timer/clock to run
+ * grabs values from text forms
+ */
 startBtn.addEventListener('click', function () {
-  startBtn.disabled = true;
-  stopBtn.disabled = false;
+  switchButtonsState();
   runClock = true;
   setValues();
 });
+/**
+ * Disables itself
+ * Enables start button
+ * Stops timer/clock
+ */
 stopBtn.addEventListener('click', function () {
-  startBtn.disabled = false;
-  stopBtn.disabled = true;
+  switchButtonsState();
   runClock = false;
+});
+/**
+ * Change mode to constant
+ * Display the constant text form div
+ * Hide the varied text form div
+ */
+repeatRadioBtn.addEventListener('click', function () {
+  mode = 'constant';
+  repeatTextForm.style.display = 'inline';
+  variedTextForm.style.display = 'none';
+});
+/**
+ * Change mode to varied
+ * Display the varied text form div
+ * Hide the varied text form div
+ */
+variedRadioBtn.addEventListener('click', function () {
+  mode = 'varied';
+  repeatTextForm.style.display = 'none';
+  variedTextForm.style.display = 'inline';
 });
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
