@@ -5,8 +5,8 @@
   <link rel="stylesheet" href="/style.e308ff8e.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/style.e308ff8e.js"></script></head>
-<body>
-  <div id="radio">
+<body class="container">
+  <div id="radio" class="child">
     <form id="slider">
       <input type="radio" name="radioBtn" id="repeatRadioBtn" checked="checked">
       <label for="repeatRadioBtn">Constant</label>
@@ -14,7 +14,8 @@
       <label for="variedRadioBtn">Varied</label>
     </form>
   </div>
-  <div id="constant">
+  <br>
+  <div id="constant" class="child">
     <form id="textinput">
       <label for="repetitions">Repetitions(count)</label>
       <br>
@@ -24,14 +25,14 @@
       <input type="number" id="duration" name="duration" value="1000"> <br><br>
     </form>
   </div>
-  <div id="varied" style="display: none;">
+  <div id="varied" style="display: none;" class="child">
     <form id="textinput">
       <label for="pattern">Give pattern in milliseconds separated by commas e.g. 200, 300, 100, 400, 1000</label>
       <br>
       <input type="text" id="pattern" name="pattern" value="200, 300, 100, 400, 1000"> <br><br>
     </form>
   </div>
-  <div id="buttons">
+  <div id="buttons" class="child">
     <button id="start">START</button>
     <button id="stop" disabled="true">STOP</button>
   </div>
